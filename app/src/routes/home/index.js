@@ -7,9 +7,9 @@ const ctrl = require('./home.ctrl')
 
 // 컨트롤로 분리한 후 가져오기
 // router.get("/", ctrl.output.home); 좀더 명확하게 명시하기
-router.get("/", ctrl.home);
+router.get("/", ctrl.output.home);
 
-router.get("/login" , ctrl.login);
-//router.post("/login" , ctrl.login);
+router.get("/login" , ctrl.output.login);
+router.post("/login" , ctrl.porcess.login);
 
 module.exports = router;

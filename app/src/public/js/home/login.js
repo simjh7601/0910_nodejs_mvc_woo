@@ -12,7 +12,7 @@ longinBtn.addEventListener("click", login);
 function login(){
     const req = {
         id : id.value,
-        pw : psword.value,
+        psword : psword.value,
     };
 
     // 첫번째 에는 어떠한 경로로 데이터를 전달해줘야 한다. , 
@@ -25,4 +25,7 @@ function login(){
         },
         body:JSON.stringify(req),
     })
+    .then((res) => res.json())
+    .then((res)=> console.log(res));
+
 };
