@@ -12,11 +12,14 @@ const id  = document.querySelector("#id"),
 registerBtn.addEventListener("click", register);
 
 function register(){
+    if (!id.value) return alert("아이디 입력");
+    if (psword.value !== confirmPsword.value) return alert("비밀번호가 일치하지 않습니다.");
+
+
     const req = {
         id : id.value,
         name : name.value,
         psword : psword.value,
-        confirmPsword : confirmPsword.value,
     };
 
     
@@ -30,8 +33,11 @@ function register(){
         },
         body:JSON.stringify(req),
     })
+    // 서버로부터 응답이 오면 json메소드 호출을 해서 서버의 응답이 다 받아지는 순간 프로미스객체 반환을 하게 될거고
     .then((res) => res.json())
+    // 프로미스 객체를 반환해서 두번째 .then으로 올수 있고 거기서 res로 접근해서 
     .then((res)=> {
+        // res.success 가 트루면
         if (res.success){
             location.href = "/login"
         }else {
