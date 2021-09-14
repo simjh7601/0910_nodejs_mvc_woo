@@ -19,15 +19,17 @@ class UserStorage{
             console.log(newUsers);
             return newUsers;
         }
-
+        // 요청한 해당 id만 가져오기 위한 로직
         static getUserInfo(id){
             const users = this.#users;
             const idx = users.id.indexOf(id);
+            // users의 키값들만 배열로 만들다.
             const userKeys = Object.keys(users); // => [id, psword, name]
+            // newUser 에 키값이[info]순차적으로 들어간다. 
             const userInfo = userKeys.reduce((newUser , info) =>{
                 newUser[info] = users[info][idx]
                 return newUser;
-            } ,{});
+            } ,{}); // <= 초기값
             return userInfo;
         }
 }
