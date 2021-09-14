@@ -4,7 +4,7 @@
 // login.ejs 에 <script src="/js/home/login.js" defer/> 만들어서 연결
 const id  = document.querySelector("#id"),
  psword  = document.querySelector("#psword"),
- longinBtn  = document.querySelector("button");
+ longinBtn  = document.querySelector("#button");
 
  // 버튼에 클릭 이벤트를 주었다. 이름은 login
 longinBtn.addEventListener("click", login);
