@@ -25,10 +25,10 @@ const output = {
 
 const porcess = {
     // req 는 프론트단에서 보내준 정보를 담아두는 객체
-    login : (req, res) =>{
+    login : async (req, res) =>{
         const user = new User(req.body);
         // user에 생성한 login을 불러온다
-        const response = user.login();
+        const response =  await user.login();
         // 클라이언트한테 json형태로 응답하기위함
         console.log(response);
         return res.json(response);
