@@ -4,19 +4,18 @@
 // 모듈
 const { json } = require('express');
 const express = require('express');
-// bodyParser 버전 업그레이드로 인해 사라짐 express 로 들어감
-// const bodyParser = require("body-parser");
-
-
 // 환경변수 모델
 const dotenv = require("dotenv");
-const morgan = require("morgan");
+// const morgan = require("morgan");
+// const logger = require("./src/config/logger");
+
+
+
 
 
 const app = express();
 dotenv.config()
 
-const accessLogStream = require("./src/config/log");
 // 라우팅
 const home = require("./src/routes/home");
 
@@ -34,8 +33,8 @@ app.use(express.json());
 // 제대로 인식되지 않는 문제 해결
 app.use(express.urlencoded({ extended:true }));
     // 콘솔에 보여주기
-app.use(morgan("dev"));
-app.use(morgan('common', {stream: accessLogStream}));
+// app.use(morgan("dev"));
+// app.use(morgan('tiny', {stream: logger.stream}));
 // routes
 app.use("/", home)  //use -> 미들 웨어를 등록해주는 메서드
    
