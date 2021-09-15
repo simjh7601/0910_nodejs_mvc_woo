@@ -6,6 +6,13 @@ const { json } = require('express');
 const express = require('express');
 // bodyParser 버전 업그레이드로 인해 사라짐 express 로 들어감
 // const bodyParser = require("body-parser");
+
+
+// 환경변수 모델
+const dotenv = require("dotenv");
+dotenv.config()
+
+
 const app = express();
 
 // 라우팅

@@ -5,11 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 </head>
 <body>
     <p>
         여기는 루트            
     </p>
-    
+    <div class="col-6 chart">
+        <canvas id="myChart2" width="500" height="400"></canvas>
+    </div>
+    <script>
+        let labels2 = ['test1', 'test2', 'test3', 'test4'];
+        let data2 = [199.6, 250.3, 126.3, 130];
+        let colors2 = ['#49A9EA', '#36CAAB', '#34495E', '#B370CF'];
+
+        let myChart2 = document.getElementById("myChart2").getContext('2d');
+
+        let chart2 = new Chart(myChart2, {
+            type: 'line',
+            data: {
+                labels: labels2,
+                datasets: [ {
+                    data: data2,
+                    backgroundColor: colors2
+                }]
+            },
+            options: {
+                title: {
+                    text: "Number of passengers carried in 2017 (in mio.)",
+                    display: true
+                },
+                legend: {
+                display: false
+                }
+            }
+        });
+
+    </script>
 </body>
 </html>

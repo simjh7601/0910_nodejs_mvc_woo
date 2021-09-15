@@ -2,8 +2,9 @@
 
 const app  = require('../app')
 
-const port = 9010;
+const PORT = process.env.PORT || 9010 ;
 
-app.listen(port, ()=>{
+
+app.listen(PORT, ()=>{
     console.log("서버가동");
 });
