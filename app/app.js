@@ -10,13 +10,17 @@ const express = require('express');
 
 // 환경변수 모델
 const dotenv = require("dotenv");
-dotenv.config()
+const morgan = require("morgan");
 
 
 const app = express();
+dotenv.config()
 
+const accessLogStream = require("./src/config/log");
 // 라우팅
 const home = require("./src/routes/home");
+
+
 
 //앱 세팅
 //view
@@ -29,6 +33,9 @@ app.use(express.json());
 // URL을 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 
 // 제대로 인식되지 않는 문제 해결
 app.use(express.urlencoded({ extended:true }));
+    // 콘솔에 보여주기
+app.use(morgan("dev"));
+app.use(morgan('common', {stream: accessLogStream}));
 // routes
 app.use("/", home)  //use -> 미들 웨어를 등록해주는 메서드
    
