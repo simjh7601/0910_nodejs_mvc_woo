@@ -22,7 +22,11 @@ const output = {
         logger.info(`GET /register 304 "회원가입 화면으로 이동"` )
         res.render("home/register");
     },
+
+
 };
+
+
 
 
 const porcess = {
@@ -57,11 +61,38 @@ const porcess = {
     }
 };
 
+// chartjs 정보
+const view_chart = {
+    chart_page : (req, res) =>{
+        logger.info(`GET /register 304 "라인 차트 화면으로 이동"` )
+        res.render("home/chartjs_line"); 
+    },
+};
+
+const chart_view_process = {
+    chart_view : async (req, res) =>{
+        const user = new User(req.body);
+        // user에 생성한 login을 불러온다
+        const response =  await Chart.reference();
+
+        const url = {
+            method:"POST",
+            path:"/chart",
+            status: response.err ? 400 : 200,
+        }
+
+        log(response,url );
+        // 클라이언트한테 json형태로 응답하기위함
+        return res.status(url.status).json(response);
+    } 
+}
+
 
 module.exports = {
     output,
     porcess,
-    
+    view_chart,
+    chart_view_process,
 };
 
 const log = (response , url) =>{

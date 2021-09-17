@@ -7,6 +7,7 @@ var db = mysql.createConnection({
     database : process.env.DB_DATABASE
   });
 
+
   db.connect();
 
   module.exports = db;
